@@ -50,6 +50,9 @@ img {
     background-color:beige;
     border: 1px solid blue;
 }
+#game ul li:hover {
+    cursor: pointer;
+}
 
 #game #resetGameButton {
     margin-top: 20px;
