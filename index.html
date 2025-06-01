@@ -22,18 +22,18 @@
             </div>
             <div id="game">
                 <ul id="boxes">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li onclick="checkClick(0)"></li>
+                    <li onclick="checkClick(1)"></li>
+                    <li onclick="checkClick(2)"></li>
+                    <li onclick="checkClick(3)"></li>
+                    <li onclick="checkClick(4)"></li>
+                    <li onclick="checkClick(5)"></li>
+                    <li onclick="checkClick(6)"></li>
+                    <li onclick="checkClick(7)"></li>
+                    <li onclick="checkClick(8)"></li>
+                    <li onclick="checkClick(9)"></li>
+                    <li onclick="checkClick(10)"></li>
+                    <li onclick="checkClick(11)"></li>
                 </ul>
                 <button id="resetGameButton" onclick="resetGame()">Reset Game!</button>
             </div>
@@ -73,6 +73,13 @@
                 for (let i=0; i<12; i++) {
                     document.getElementById('boxes').getElementsByTagName('li')[i].style.backgroundColor = "beige"    
                 }
+            }
+        }
+        const checkClick = (answer) => {
+            if (document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor === "blue") {
+                document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor = "green"
+            } else if (document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor === "beige") {
+                document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor = 'red'
             }
         }
         const resetGame = () => {
