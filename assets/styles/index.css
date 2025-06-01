@@ -19,7 +19,7 @@ img {
     margin-right: auto;
     border-radius: 10px;
 }
-.timer, .total-points {
+#timer, #points {
     justify-content: space-evenly;
     font-size: 32px;
 }
@@ -31,8 +31,11 @@ img {
     font-size: 20px;
     font-weight: 700;
 }
+.game-info #startGameButton:hover {
+    cursor: pointer;
+}
 #game {
-    display: none;
+    /* display: none; */
 }
 #game ul {
     list-style: none;
@@ -55,4 +58,7 @@ img {
     border-radius: 10px;
     font-size: 20px;
     font-weight: 700;
+}
+#game #resetGameButton:hover {
+    cursor: pointer;
 }

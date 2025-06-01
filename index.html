@@ -10,15 +10,15 @@
         <div class="container">
             <img class="hero" src="./assets/images/Copilot_20250601_222257.png" alt="" width="300px">
             <div class="game-info">
-                <div class="timer row">
+                <div id='timer' class="row">
                     <span>Time</span>
-                    <span>60</span>
+                    <span>10</span>
                 </div>
-                <div class="total-points row">
+                <div id="points" class="row">
                     <span>Points</span>
                     <span>0</span>
                 </div>
-                <button id="startGameButton" onclick="startGame()">Start Game!</button>
+                <button id="startGameButton" onclick="startGame(); randomColors()">Start Game!</button>
             </div>
             <div id="game">
                 <ul>
@@ -35,14 +35,38 @@
                     <li></li>
                     <li></li>
                 </ul>
-                <button id="resetGameButton">Reset Game!</button>
+                <button id="resetGameButton" onclick="resetGame()">Reset Game!</button>
             </div>
         </div>
     </body>
     <script>
+        let gameCounter = null
+        let RandomColorIntervals = null
+        const timerSpan = document.getElementById('timer').getElementsByTagName('span')[1]
         const startGame = () => {
             document.getElementById('game').style.display = 'block'
             document.getElementById('startGameButton').style.display = 'none'
+            gameCounter = setInterval(() =>{
+                timerSpan.innerText = parseInt(timerSpan.innerText-1)
+                checkTimeUp()
+            },1000)
+
+        }
+        const checkTimeUp = () => {
+            if (!parseInt(timerSpan.innerText)) {
+                clearInterval(gameCounter)
+                clearInterval(RandomColorIntervals)
+                document.getElementById('timer').style.color = 'red'
+                document.getElementById('timer').style.fontWeight = '600'
+            }
+        }
+        const randomColors = () => {
+            RandomColorIntervals = setInterval(() => {
+                console.log('reza')
+            },1000)
+        }
+        const resetGame = () => {
+            window.location.reload(true)
         }
     </script>
 </html>
