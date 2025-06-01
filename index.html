@@ -4,11 +4,45 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="./assets/styles/index.css">
     </head>
     <body>
-        
+        <div class="container">
+            <img class="hero" src="./assets/images/Copilot_20250601_222257.png" alt="" width="300px">
+            <div class="game-info">
+                <div class="timer row">
+                    <span>Time</span>
+                    <span>60</span>
+                </div>
+                <div class="total-points row">
+                    <span>Points</span>
+                    <span>0</span>
+                </div>
+                <button id="startGameButton" onclick="startGame()">Start Game!</button>
+            </div>
+            <div id="game">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <button id="resetGameButton">Reset Game!</button>
+            </div>
+        </div>
     </body>
     <script>
-        
+        const startGame = () => {
+            document.getElementById('game').style.display = 'block'
+            document.getElementById('startGameButton').style.display = 'none'
+        }
     </script>
 </html>

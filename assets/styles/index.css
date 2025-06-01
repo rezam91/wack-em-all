@@ -1,3 +1,58 @@
 * {
     box-sizing: border-box;
 }
+img {
+    display: block;
+}
+.row {
+    display: flex;
+}
+.container {
+    text-align: center;
+    width: 500px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+.timer, .total-points {
+    justify-content: space-evenly;
+    font-size: 32px;
+}
+.game-info #startGameButton {
+    margin-top: 20px;
+    width: 50%;
+    height: 60px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+#game {
+    display: none;
+}
+#game ul {
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+#game ul li {
+    width: 25%;
+    height: 100px;
+    background-color:beige;
+    border: 1px solid blue;
+}
+
+#game #resetGameButton {
+    margin-top: 20px;
+    width: 50%;
+    height: 60px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
