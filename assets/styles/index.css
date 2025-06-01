@@ -35,7 +35,7 @@ img {
     cursor: pointer;
 }
 #game {
-    /* display: none; */
+    display: none;
 }
 #game ul {
     list-style: none;

@@ -43,6 +43,7 @@
         let gameCounter = null
         let RandomColorIntervals = null
         const timerSpan = document.getElementById('timer').getElementsByTagName('span')[1]
+        const pointSpan = document.getElementById('points').getElementsByTagName('span')[1]
         const startGame = () => {
             document.getElementById('game').style.display = 'block'
             document.getElementById('startGameButton').style.display = 'none'
@@ -78,8 +79,10 @@
         const checkClick = (answer) => {
             if (document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor === "blue") {
                 document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor = "green"
+                pointSpan.innerText = parseInt(pointSpan.innerText) + 1
             } else if (document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor === "beige") {
                 document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor = 'red'
+                pointSpan.innerText = parseInt(pointSpan.innerText) - 1
             }
         }
         const resetGame = () => {
