@@ -10,13 +10,16 @@ img {
 .container {
     text-align: center;
     width: 500px;
-    border: 1px solid black;
+    border: 1px solid gray;
+    border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
+    font-family:nunito ;
 }
 .hero {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
     border-radius: 10px;
 }
 #timer, #points {
@@ -25,14 +28,29 @@ img {
 }
 .game-info #startGameButton {
     margin-top: 20px;
+    margin-bottom: 10px;
     width: 50%;
     height: 60px;
     border-radius: 10px;
     font-size: 20px;
     font-weight: 700;
+    font-family: nunito;
 }
 .game-info #startGameButton:hover {
     cursor: pointer;
+}
+#ready {
+    display: none;
+    background-color: beige;
+    border: 1px solid gray;
+    width: fit-content;
+    position: fixed;
+    top: 240px;
+    left: 50%;
+    font-weight: 700;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 #game {
     display: none;
@@ -63,11 +81,13 @@ img {
 
 #game #resetGameButton {
     margin-top: 20px;
+    margin-bottom: 10px;
     width: 50%;
     height: 60px;
     border-radius: 10px;
     font-size: 20px;
     font-weight: 700;
+    font-family: nunito;
 }
 #game #resetGameButton:hover {
     cursor: pointer;

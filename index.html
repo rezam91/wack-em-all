@@ -4,11 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./assets/styles/index.css">
     </head>
     <body>
         <div class="container">
-            <img class="hero" src="./aassets/images/Copilot_20250601_222257.png" alt="" width="300px">
+            <img class="hero" src="./assets/images/Copilot_20250601_222257.png" alt="" width="300px">
             <div class="game-info">
                 <div id='timer' class="row">
                     <span>Time</span>
@@ -18,7 +21,11 @@
                     <span>Points</span>
                     <span>0</span>
                 </div>
-                <button id="startGameButton" onclick="startGame(); randomColors()">Start Game!</button>
+                <button id="startGameButton" onclick="startGame()">Start Game!</button>
+            </div>
+            <div id="ready">
+                <span>Are You Ready ?!</span>
+                <span>3</span>
             </div>
             <div id="game">
                 <ul id="boxes">
@@ -45,12 +52,22 @@
         const timerSpan = document.getElementById('timer').getElementsByTagName('span')[1]
         const pointSpan = document.getElementById('points').getElementsByTagName('span')[1]
         const startGame = () => {
-            document.getElementById('game').style.display = 'block'
+            document.getElementById('ready').style.display = 'flex'
+            document.getElementById('ready').style.flexDirection = 'column'
             document.getElementById('startGameButton').style.display = 'none'
-            gameCounter = setInterval(() =>{
-                timerSpan.innerText = parseInt(timerSpan.innerText-1)
-                checkTimeUp()
+            let counter321 = setInterval(()=>{
+                document.getElementById('ready').getElementsByTagName('span')[1].innerText = parseInt(document.getElementById('ready').getElementsByTagName('span')[1].innerText)-1
             },1000)
+            setTimeout(() => {
+                clearInterval(counter321)
+                document.getElementById('ready').style.display = 'none'
+                document.getElementById('game').style.display = 'block'
+                randomColors()
+                gameCounter = setInterval(() =>{
+                    timerSpan.innerText = parseInt(timerSpan.innerText-1)
+                    checkTimeUp()
+                },1000)
+            },3000)
 
         }
         const randomColors = () => {
