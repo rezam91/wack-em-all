@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="container">
-            <img class="hero" src="./assets/images/Copilot_20250601_222257.png" alt="" width="300px">
+            <img class="hero" src="./aassets/images/Copilot_20250601_222257.png" alt="" width="300px">
             <div class="game-info">
                 <div id='timer' class="row">
                     <span>Time</span>
@@ -54,8 +54,13 @@
 
         }
         const randomColors = () => {
-            RandomColorIntervals = setInterval(() => {
                 let num = Math.floor(Math.random()*12)
+                for (let i=0; i<12; i++) {
+                    document.getElementById('boxes').getElementsByTagName('li')[i].style.backgroundColor = "beige"    
+                }
+                document.getElementById('boxes').getElementsByTagName('li')[num].style.backgroundColor = "blue"
+            RandomColorIntervals = setInterval(() => {
+                num = Math.floor(Math.random()*12)
                 // document.getElementById('boxes').getElementsByTagName('li').forEach((item) => {
                 //     item.style.backgroundColor = "beige"
                 // })
@@ -72,17 +77,25 @@
                 document.getElementById('timer').style.color = 'red'
                 document.getElementById('timer').style.fontWeight = '600'
                 for (let i=0; i<12; i++) {
-                    document.getElementById('boxes').getElementsByTagName('li')[i].style.backgroundColor = "beige"    
+                    document.getElementById('boxes').getElementsByTagName('li')[i].style.backgroundColor = "cadetblue"    
                 }
+                document.getElementById('boxes').getElementsByTagName('li')[4].innerText = "FI"
+                document.getElementById('boxes').getElementsByTagName('li')[5].innerText = "NI"
+                document.getElementById('boxes').getElementsByTagName('li')[6].innerText = "SH"
+                document.getElementById('boxes').getElementsByTagName('li')[7].innerText = "ED"
             }
         }
         const checkClick = (answer) => {
             if (document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor === "blue") {
                 document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor = "green"
                 pointSpan.innerText = parseInt(pointSpan.innerText) + 1
+                clearInterval(RandomColorIntervals)
+                randomColors()
             } else if (document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor === "beige") {
                 document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor = 'red'
                 pointSpan.innerText = parseInt(pointSpan.innerText) - 1
+                // clearInterval(RandomColorIntervals)
+                // randomColors()
             }
         }
         const resetGame = () => {
