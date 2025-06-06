@@ -68,6 +68,7 @@
         let gameCounter = null
         let RandomColorIntervals = null
         let gameDifficulty = null
+        let newGameDifficulty = null
         const timerSpan = document.getElementById('timer').getElementsByTagName('span')[1]
         const pointSpan = document.getElementById('points').getElementsByTagName('span')[1]
         const getTimeAndDifficulty = () => {
@@ -87,6 +88,7 @@
             } else {
                 gameDifficulty = 500
             }
+            newGameDifficulty = gameDifficulty
             document.getElementById('gameInfo').style.top = '-300px'
             startGame()
         }
@@ -109,6 +111,7 @@
                 gameCounter = setInterval(() =>{
                     timerSpan.innerText = parseInt(timerSpan.innerText-1)
                     checkTimeUp()
+                    difficultyModifier()
                 },1000)
             },3000)
 
@@ -128,7 +131,7 @@
                     document.getElementById('boxes').getElementsByTagName('li')[i].style.backgroundColor = "beige"    
                 }
                 document.getElementById('boxes').getElementsByTagName('li')[num].style.backgroundColor = "blue"
-            },gameDifficulty)
+            },newGameDifficulty)
         }
         const checkTimeUp = () => {
             if (!parseInt(timerSpan.innerText)) {
@@ -154,9 +157,23 @@
             } else if (document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor === "beige") {
                 document.getElementById('boxes').getElementsByTagName('li')[answer].style.backgroundColor = 'red'
                 pointSpan.innerText = parseInt(pointSpan.innerText) - 1
-                // clearInterval(RandomColorIntervals)
-                // randomColors()
             }
+        }
+        const difficultyModifier = () => {
+            let pointNow = parseInt(document.getElementById('points').getElementsByTagName('span')[1].innerText)
+            if (pointNow<0) {
+                newGameDifficulty = gameDifficulty * 2
+            } else if (pointNow>=0 && pointNow<10) {
+                newGameDifficulty = gameDifficulty
+            } else if(pointNow>=10 && pointNow<20) {
+                newGameDifficulty = gameDifficulty * 0.9
+            } else if(pointNow>=20 && pointNow<30) {
+                newGameDifficulty = gameDifficulty * 0.8
+            } else {
+                newGameDifficulty = gameDifficulty * 0.7
+            }
+            console.log(newGameDifficulty)
+            //man ehsas mikonam in ghesmat kaar nemikone
         }
         const resetGame = () => {
             window.location.reload(true)
