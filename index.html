@@ -21,7 +21,7 @@
                     <span>Points</span>
                     <span>0</span>
                 </div>
-                <button id="startGameButton" onclick="startGame()">Start Game!</button>
+                <button id="startGameButton" onclick="getTimeAndDifficulty()">Start Game!</button>
             </div>
             <div id="ready">
                 <span>Are You Ready ?!</span>
@@ -44,13 +44,56 @@
                 </ul>
                 <button id="resetGameButton" onclick="resetGame()">Reset Game!</button>
             </div>
+            <form id="gameInfo" onsubmit="submitGameInfo(event)">
+                <div class="game-duration">
+                    <span><b>Time (seconds)</b></span>
+                    <div class="time-wrapper">
+                        <span onclick="setGameTime(30)">30s</span>
+                        <span onclick="setGameTime(60)">60s</span>
+                        <span onclick="setGameTime(90)">90s</span>
+                    </div>
+                </div>
+                <div class="game-difficulty">
+                    <span><b>Difficulty</b></span>
+                    <div class="difficulty-wrapper">
+                        <span onclick="submitGameDifficulty('easy')" type="submit">easy</span>
+                        <span onclick="submitGameDifficulty('medium')" type="submit">medium</span>
+                        <span onclick="submitGameDifficulty('hard')" type="submit">hard</span>
+                    </div>
+                </div>
+            </form>
         </div>
     </body>
     <script>
         let gameCounter = null
         let RandomColorIntervals = null
+        let gameDifficulty = null
         const timerSpan = document.getElementById('timer').getElementsByTagName('span')[1]
         const pointSpan = document.getElementById('points').getElementsByTagName('span')[1]
+        const getTimeAndDifficulty = () => {
+            document.getElementById('gameInfo').style.top = '100px'
+            document.getElementById('gameInfo').getElementsByTagName('div')[2].style.display = 'none'
+        }
+        const setGameTime = (num) => {
+            document.getElementById('timer').getElementsByTagName('span')[1].innerText = num
+            document.getElementById('gameInfo').getElementsByTagName('div')[0].style.display = 'none';
+            document.getElementById('gameInfo').getElementsByTagName('div')[2].style.display = 'block';
+        }
+        const submitGameDifficulty = (level) => {
+            if (level === 'easy') {
+                gameDifficulty = 1500
+            } else if (level === 'medium') {
+                gameDifficulty = 1000
+            } else {
+                gameDifficulty = 500
+            }
+            document.getElementById('gameInfo').style.top = '-300px'
+            startGame()
+        }
+        const submitGameInfo = (e) => {
+            e.preventDefault()
+            console.log('here')
+        }
         const startGame = () => {
             document.getElementById('ready').style.display = 'flex'
             document.getElementById('ready').style.flexDirection = 'column'
@@ -85,7 +128,7 @@
                     document.getElementById('boxes').getElementsByTagName('li')[i].style.backgroundColor = "beige"    
                 }
                 document.getElementById('boxes').getElementsByTagName('li')[num].style.backgroundColor = "blue"
-            },1000)
+            },gameDifficulty)
         }
         const checkTimeUp = () => {
             if (!parseInt(timerSpan.innerText)) {
